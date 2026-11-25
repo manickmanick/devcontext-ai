@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { makeInvoke } from "@forge/bridge";
 import "./App.css";
+import { RESOLVER_NAMES } from "./constants/resolver-names";
 
 type IssueDetails = {
   key: string;
@@ -28,8 +29,8 @@ function App() {
         setError("");
 
         const [issueDetails, issueLabels] = await Promise.all([
-          invoke("getIssueDetails"),
-          invoke("fetchLabels"),
+          invoke(RESOLVER_NAMES.GET_ISSUE_DETAILS),
+          invoke(RESOLVER_NAMES.FETCH_LABELS),
         ]);
 
         setIssue(issueDetails);
