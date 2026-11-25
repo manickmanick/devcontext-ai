@@ -381,3 +381,71 @@ input {
     padding: 13px;
   }
 }
+
+/* Analysis Section */
+
+.analysis-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 22px;
+  padding: 18px;
+  border: 1px solid #ddd6fe;
+  border-radius: 10px;
+  background: #faf9ff;
+}
+
+.analysis-info h3 {
+  margin: 0 0 6px;
+  color: #172b4d;
+  font-size: 15px;
+}
+
+.analysis-info p {
+  margin: 0;
+  color: #6b778c;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.analyze-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 7px;
+  background: #6554c0;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.analyze-button:hover:not(:disabled) {
+  background: #5243aa;
+}
+
+.analyze-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.button-loader {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@media (max-width: 480px) {
+  .analysis-section {
+    padding: 14px;
+  }
+}

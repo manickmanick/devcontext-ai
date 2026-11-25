@@ -22,6 +22,7 @@ function App() {
   const [labels, setLabels] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   useEffect(() => {
     const loadIssueData = async () => {
@@ -73,6 +74,19 @@ function App() {
 
     loadIssueData();
   }, []);
+
+  const handleAnalyzeTicket = async () => {
+    try {
+      setIsAnalyzing(true);
+
+      // Temporary testing only
+      console.log("Analyze Ticket button clicked");
+    } catch (error) {
+      console.error("Analysis failed:", error);
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
 
   if (loading) {
     return (
@@ -166,6 +180,34 @@ function App() {
             <p className="empty-text">No labels added to this issue.</p>
           )}
         </section>
+      </section>
+
+      <section className="analysis-section">
+        <div className="analysis-info">
+          <h3>Ready to understand this issue?</h3>
+          <p>
+            Analyze requirements, technical context, potential risks and missing
+            edge cases.
+          </p>
+        </div>
+
+        <button
+          className="analyze-button"
+          onClick={handleAnalyzeTicket}
+          disabled={isAnalyzing}
+        >
+          {isAnalyzing ? (
+            <>
+              <span className="button-loader" />
+              Analyzing...
+            </>
+          ) : (
+            <>
+              <span>✦</span>
+              Analyze Ticket
+            </>
+          )}
+        </button>
       </section>
 
       <footer className="app-footer">
