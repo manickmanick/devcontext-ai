@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { makeInvoke } from "@forge/bridge";
 import "./App.css";
 import { RESOLVER_NAMES } from "./constants/resolver-names";
+import type { ApiResponse } from "./types/api-response";
 
 type IssueDetails = {
   key: string;
@@ -10,8 +11,8 @@ type IssueDetails = {
 };
 
 type ResolverDefinitions = {
-  fetchLabels: () => string[];
-  getIssueDetails: () => IssueDetails;
+  fetchLabels: () => ApiResponse<string[]>;
+  getIssueDetails: () => ApiResponse<IssueDetails>;
 };
 
 const invoke = makeInvoke<ResolverDefinitions>();
@@ -28,16 +29,43 @@ function App() {
         setLoading(true);
         setError("");
 
-        const [issueDetails, issueLabels] = await Promise.all([
+        const results = await Promise.allSettled([
           invoke(RESOLVER_NAMES.GET_ISSUE_DETAILS),
           invoke(RESOLVER_NAMES.FETCH_LABELS),
         ]);
 
-        setIssue(issueDetails);
-        setLabels(issueLabels);
+        const [issueResult, labelsResult] = results;
+
+        // Issue Details result
+        if (issueResult.status === "fulfilled") {
+          const response = issueResult.value;
+
+          if (response.success) {
+            setIssue(response.data);
+          } else {
+            console.error("GET_ISSUE_DETAILS failed:", response.error);
+            setError(response.error?.message ?? "Failed to load issue details");
+          }
+        } else {
+          console.error("GET_ISSUE_DETAILS rejected:", issueResult.reason);
+          setError("Unable to load Jira issue details.");
+        }
+
+        // Labels result
+        if (labelsResult.status === "fulfilled") {
+          const response = labelsResult.value;
+
+          if (response.success) {
+            setLabels(response.data || []);
+          } else {
+            console.error("FETCH_LABELS failed:", response.error);
+          }
+        } else {
+          console.error("FETCH_LABELS rejected:", labelsResult.reason);
+        }
       } catch (err) {
-        console.error("Failed to load Jira issue:", err);
-        setError("Unable to load Jira issue details. Please try again.");
+        console.error("Unexpected frontend error:", err);
+        setError("Something went wrong. Please try again.");
       } finally {
         setLoading(false);
       }
