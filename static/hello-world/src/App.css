@@ -1,0 +1,383 @@
+/* ----------------------------------
+   Base styles
+---------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #172b4d;
+  background: #f7f8fa;
+  font-synthesis: none;
+}
+
+body {
+  margin: 0;
+  min-width: 280px;
+  background: #f7f8fa;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 24px;
+  margin: 0 auto;
+}
+
+/* ----------------------------------
+   Header
+---------------------------------- */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6554c0, #2684ff);
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.brand h1 {
+  margin: 0;
+  color: #172b4d;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.brand p {
+  margin: 4px 0 0;
+  color: #6b778c;
+  font-size: 12px;
+}
+
+.status-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 10px;
+  border: 1px solid #abf5d1;
+  border-radius: 20px;
+  background: #e3fcef;
+  color: #216e4e;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22a06b;
+}
+
+/* ----------------------------------
+   Issue card
+---------------------------------- */
+
+.issue-card {
+  padding: 22px;
+  border: 1px solid #dfe1e6;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(9, 30, 66, 0.04);
+}
+
+.issue-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 12px;
+}
+
+.issue-key {
+  padding: 5px 9px;
+  border-radius: 5px;
+  background: #eae6ff;
+  color: #5243aa;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.issue-type {
+  color: #6b778c;
+  font-size: 11px;
+}
+
+.issue-title {
+  margin: 0;
+  color: #172b4d;
+  font-size: 21px;
+  font-weight: 650;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+/* ----------------------------------
+   Sections
+---------------------------------- */
+
+.section-divider {
+  height: 1px;
+  margin: 22px 0;
+  background: #ebecf0;
+}
+
+.content-section {
+  min-width: 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 14px;
+}
+
+.section-heading h3 {
+  margin: 0;
+  color: #172b4d;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.section-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 7px;
+  background: #f1efff;
+  color: #6554c0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 21px;
+  height: 21px;
+  padding: 0 6px;
+  border-radius: 12px;
+  background: #f1f2f4;
+  color: #44546f;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ----------------------------------
+   Description
+---------------------------------- */
+
+.description-content {
+  color: #44546f;
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+/* ----------------------------------
+   Labels
+---------------------------------- */
+
+.labels-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.label-chip {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 6px 11px;
+  border: 1px solid #cce0ff;
+  border-radius: 6px;
+  background: #e9f2ff;
+  color: #0747a6;
+  font-size: 11px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.empty-text {
+  margin: 0;
+  color: #8993a4;
+  font-size: 12px;
+}
+
+/* ----------------------------------
+   Loading and error states
+---------------------------------- */
+
+.state-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  padding: 24px;
+  border: 1px solid #dfe1e6;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #6b778c;
+  text-align: center;
+}
+
+.state-card p {
+  font-size: 13px;
+}
+
+.state-card h2 {
+  margin: 12px 0 4px;
+  color: #172b4d;
+  font-size: 17px;
+}
+
+.loader {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #dfe1e6;
+  border-top-color: #6554c0;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-card .state-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffebe6;
+  color: #c9372c;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* ----------------------------------
+   Footer
+---------------------------------- */
+
+.app-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 18px;
+  color: #8993a4;
+  font-size: 10px;
+}
+
+/* ----------------------------------
+   Responsive styles
+---------------------------------- */
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: 14px;
+  }
+
+  .app-header {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .brand {
+    gap: 9px;
+  }
+
+  .brand-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    font-size: 18px;
+  }
+
+  .brand h1 {
+    font-size: 17px;
+  }
+
+  .brand p {
+    max-width: 190px;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .status-label {
+    padding: 5px 7px;
+    font-size: 10px;
+  }
+
+  .issue-card {
+    padding: 16px;
+  }
+
+  .issue-title {
+    font-size: 18px;
+  }
+
+  .section-divider {
+    margin: 18px 0;
+  }
+
+  .description-content {
+    font-size: 12px;
+    line-height: 1.75;
+  }
+
+  .app-footer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 340px) {
+  .app-header {
+    flex-direction: column;
+  }
+
+  .issue-card {
+    padding: 13px;
+  }
+}
